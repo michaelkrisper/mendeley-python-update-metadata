@@ -1,0 +1,72 @@
+# find all documents that have an arXiv id but not a DOI
+
+    if d.identifiers is None:
+        print "No identifiers found!"
+    else:
+
+        if 'arxiv' not in d.identifiers:
+            print "No arXiv found!"
+
+        else:
+            arxiv = d.identifiers['arxiv']
+
+            if arxiv is not None:
+                print "Found",arxiv
+
+                if 'doi' not in d.identifiers:
+
+                    print d.title
+                    print d.identifiers
+
+                    # look up the DOI using the arXiv id in ADS
+                    papers = list(ads.SearchQuery(arxiv = arxiv))
+                    print papers[0].author
+                else:
+                    print "DOI not None"
+            else:
+                print "arXiv is not NONE", arxiv
+                # update the mendeley document with the doi
+
+
+
+
+
+                for d in docs:
+
+
+   # find all documents that have an doi id but not a arXiv
+
+    if d.identifiers is None:
+        print "No identifiers found!"
+    else:
+
+        if 'doi' not in d.identifiers:
+            print "No DOI found!"
+
+        else:
+            doi = d.identifiers['doi']
+
+            if doi is not None:
+                # print "Found" ,doi
+
+                if 'arxiv' not in d.identifiers:
+
+                    # print d.title
+                    # print d.identifiers
+
+                    # look up the arXiv using the DOI id in ADS
+                    papers = list(ads.SearchQuery(doi = doi))
+                    for paper in papers:
+                        print paper.title
+                        print paper.identifier
+
+
+                else:
+                    print "DOI not None"
+            else:
+                print "DOI has a value", doi
+                # update the mendeley document with the doi
+
+
+
+                
