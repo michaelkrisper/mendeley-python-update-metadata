@@ -41,4 +41,4 @@ for d in docs:
                         print paper.identifier
 
                     # update the mendeley document with the doi
-                        mendeley_session.documents.get(d.id)
+                    mendeley_session.documents.get(d.id)
